@@ -60,3 +60,42 @@ function Dog(name, color) {
   
   // Only change code above this line
   let beagle = new Dog("Snoopy");
+
+  let ownPropss = [];
+let prototypeProps = [];
+
+// Only change code below this line
+for (let property in beagle){
+  if(beagle.hasOwnProperty(property)){
+    ownPropss.push(property);
+  } else{
+    prototypeProps.push(property);
+  }
+}
+
+// Only change code below this line
+function joinDogFraternity(candidate) {
+  if(candidate.constructor===Dog){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+Dog.prototype = {
+  // Only change code below this line
+  constructor: Dog,
+  numLegs:4,
+  eat:function(){
+    console.log("yummy")
+  },
+  describe:function(){
+    console.log(`${this.name} loves eating`);
+  }
+};
+
+// Only change code below this line
+Dog.prototype.isPrototypeOf(beagle);  // yields true
+
+// Fix the code below so that it evaluates to true
+Object.prototype.isPrototypeOf(Dog.prototype);
